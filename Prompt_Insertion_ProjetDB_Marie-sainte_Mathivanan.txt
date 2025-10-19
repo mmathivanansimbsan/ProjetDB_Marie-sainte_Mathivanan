@@ -1,0 +1,46 @@
+Donne les requêtes d’insertion permettant de remplir la base de données dont le
+modèle relationnel est le suivant :
+Plateforme = (ID_Plateforme INT, Nom_Plateforme VARCHAR(50),
+Date_Mise_en_ligne DATE);
+Personnel = (ID_Personnel INT, Prénom_Personnel VARCHAR(50), Nom_Personnel
+VARCHAR(100), Fonction_Personnel VARCHAR(50), #ID_Personnel_Manager);
+Projet = (ID_Projet INT, Titre_Projet VARCHAR(150), Type_Projet VARCHAR(20),
+Genre_Musical VARCHAR(50), Budget_Production DECIMAL(12,2),
+Date_sortie_Prevue DATE, Date_Sortie_Reelle DATE);
+Contrat = (ID_Contrat INT, Date_Debut_Contrat DATE, Date_Fin_Contrat DATE,
+Avance_Contrat DECIMAL(12,2), Pourcentage_Redevance DECIMAL(3,3));
+Equipe = (ID_Equipe INT);
+Adresse = (ID_Addresse INT, Numéro_Rue VARCHAR(50), Nom_Rue
+VARCHAR(50), Appartement VARCHAR(50), Code_Postal VARCHAR(50));
+Studio = (ID_Studio INT, Nom_Studio VARCHAR(100), #ID_Addresse);
+Groupe = (ID_Groupe INT, Nom_Groupe VARCHAR(100));
+Récompense = (ID_Recompense INT, Nom_Recompense VARCHAR(100),
+Annee_Recompense INT, #ID_Projet);
+Artiste = (ID_Artiste INT, Nom_Scene VARCHAR(100), Biographie VARCHAR(2000),
+Nationalite VARCHAR(50), #ID_Groupe*);
+Enregistrement = (ID_Enregistrement INT, Titre_Enregistrement VARCHAR(150),
+Genre_Musical VARCHAR(50), Duree_Enregistrement SMALLINT,
+Date_Enregistrement DATE, #ID_Studio);
+Contact = (#ID_Artiste, ID_Contact INT, Type_Contact VARCHAR(50),
+Coordonnees_Contact VARCHAR(100));
+travaille_dans = (#ID_Personnel, #ID_Equipe);
+signe = (#ID_Artiste, #ID_Contrat);
+est_publié_sur = (#ID_Plateforme, #ID_Projet, Nombre_Streams INT);
+travaillent_sur = (#ID_Artiste, #ID_Projet, #ID_Equipe);
+est_composé_de = (#ID_Projet, #ID_Enregistrement);
+
+Les clés primaires correspondent aux id, sauf si autre chose est précisé (quand c'est
+un attribut composé) les clés étrangères sont identifiées par les #, et ont le même
+nom que les clés primaires auxquelles elles font référence.
+
+Il doit y avoir : 6 plateforme de streaming ,60 personnel, 40 projet, 27 contrat , Un
+nombre d’équipe coherent avec cela, 12 studio , 12 adresse 1 pour chaque studio, 7
+groupe, 21 recompense ,29 artiste, 150 enregistrement , 80 contact ,
+Utilise des noms d’artistes, de projets, d’enregistrements qui ont existé.
+
+Les clés étrangères doivent faire référence aux clés primaires existantes : donne les
+lignes en commençant par remplir les tables dans lesquelles il n'y a pas de clés
+étrangères, puis les tables dans lesquelles les clés étrangères font références à des
+clés primaires des tables déjà remplies.
+
+Fournis l'ensemble sous la forme d’un script SQL prêt à être exécuté.
