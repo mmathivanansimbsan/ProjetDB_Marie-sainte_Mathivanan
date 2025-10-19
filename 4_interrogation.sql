@@ -1,6 +1,6 @@
 /*Dans l'ensemble des requêtes suivantes vous retrouverez comme demandé 5 requêtes couvrant les différents types de requêtes vues en cours.
 Certaines requêtes recouvrent plusieurs types*/
-
+USE labeldb;
 -- Liste des artistes Français et Américain
 SELECT ID_Artiste, Nom_Scene, Nationalite
 FROM Artiste
